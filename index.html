@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu des Allumettes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="fire-canvas"></canvas>
+
+    <main class="app-card">
+        <header class="header">
+            <div class="flame-badge">🔥 Le Défi des Flammes</div>
+            <h1 class="title">JEU DES ALLUMETTES</h1>
+            <p class="subtitle">Retirez 1, 2 ou 3 allumettes à votre tour. <strong>Celui qui prend la dernière gagne la partie !</strong></p>
+        </header>
+
+        <section class="settings-bar">
+            <div class="field-group">
+                <label for="mode-select">Adversaire</label>
+                <select id="mode-select">
+                    <option value="pvp">👥 Joueur vs Joueur</option>
+                    <option value="ia-easy" selected>🤖 IA Naïve (Aléatoire)</option>
+                    <option value="ia-hard">⚡ IA Expert (Stratégique)</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label for="initial-matches">Allumettes au départ</label>
+                <input type="number" id="initial-matches" value="17" min="5" max="35">
+            </div>
+
+            <button class="btn-restart" id="btn-restart">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                </svg>
+                <span>Recommencer</span>
+            </button>
+        </section>
+
+        <section class="status-panel">
+            <div class="player-pill" id="turn-badge">
+                <div class="pulse-dot"></div>
+                <span id="turn-text">Tour du Joueur 1</span>
+            </div>
+            <div class="matches-count-badge">
+                <span class="label">Restantes</span>
+                <span class="count" id="match-count">17</span>
+            </div>
+        </section>
+
+        <section class="arena">
+            <div class="matches-grid" id="matches-container"></div>
+        </section>
+
+        <section class="action-panel">
+            <div class="action-caption">Combien d'allumettes voulez-vous retirer ?</div>
+            <div class="buttons-row">
+                <button class="btn-fire" id="take-1" data-take="1">
+                    <span class="btn-num">1</span>
+                    <span class="btn-sub">allumette</span>
+                </button>
+                <button class="btn-fire" id="take-2" data-take="2">
+                    <span class="btn-num">2</span>
+                    <span class="btn-sub">allumettes</span>
+                </button>
+                <button class="btn-fire" id="take-3" data-take="3">
+                    <span class="btn-num">3</span>
+                    <span class="btn-sub">allumettes</span>
+                </button>
+            </div>
+        </section>
+
+        <footer class="game-feed">
+            <div class="feed-icon">💬</div>
+            <p id="log-message">Début de la partie. À vous de jouer !</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
